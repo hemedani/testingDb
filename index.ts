@@ -1,18 +1,11 @@
 import fs from "fs";
 import http, { ServerResponse } from "http";
-
+import { generateResponse } from "./generateResponse";
 // var todos = fs.readFileSync('todos.json')
 const todos = JSON.parse(fs.readFileSync("todos.json", "utf8"));
 
-const generateResponse = (
-  res: ServerResponse,
-  contentType: string,
-  data: string,
-  code: number = 200,
-) => {
-  res.writeHead(code, { "Content-Type": contentType });
-  return res.end(data);
-};
+generateResponse(res,contentType,data,code) 
+
 
 const getTodos = (res: ServerResponse) => {
   return generateResponse(
@@ -98,3 +91,5 @@ const server = http.createServer((req, res) => {
 server.listen(process.env.PORT || 3000, () => {
   console.log(`Server is running on port ${process.env.PORT || 3000}`);
 });
+
+
