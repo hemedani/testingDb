@@ -4,13 +4,13 @@ import { generateResponse } from "./generateResponse";
 // var todos = fs.readFileSync('todos.json')
 const todos = JSON.parse(fs.readFileSync("todos.json", "utf8"));
 
-generateResponse(res,contentType,data,code) 
-
+const JSONCONTENTTYPE = "application/json";
+const HTMLCONTENTTYPE = "text/html";
 
 const getTodos = (res: ServerResponse) => {
   return generateResponse(
     res,
-    "application/json",
+    JSONCONTENTTYPE,
     JSON.stringify(todos),
   );
 };
@@ -20,15 +20,16 @@ const getTodo = (res: ServerResponse, url: URL) => {
   if (id) {
     const todo = todos.find((todo: { id: number }) => todo.id === id);
     if (todo) {
-      generateResponse(res, "application/json", JSON.stringify(todo));
+      generateResponse(res, JSONCONTENTTYPE, JSON.parse(todo));
     } else {
-      generateResponse(res, "text/html", "we ca not found this id", 404);
+      generateResponse(res, HTMLCONTENTTYPE, "we can not find this id", 404);
     }
   } else {
-    generateResponse(res, "text/html", "you should send a proper id", 404);
+    generateResponse(res, HTMLCONTENTTYPE, "you should send a proper id", 404);
   }
 };
 
+// rpositry and service and api layer
 const createTodo = (res: ServerResponse, url: URL) => {
   const title = url.searchParams.get("title");
   if (title) {
@@ -91,5 +92,3 @@ const server = http.createServer((req, res) => {
 server.listen(process.env.PORT || 3000, () => {
   console.log(`Server is running on port ${process.env.PORT || 3000}`);
 });
-
-
