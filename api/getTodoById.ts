@@ -1,5 +1,6 @@
 import { ServerResponse } from "node:http";
 import { findTodoByIdService } from "../service";
+import { generateResponse, HTMLCONTENTTYPE, JSONCONTENTTYPE } from "../utils";
 
 export const getTodoByIdApi = (res: ServerResponse, url: URL) => {
   // return findTodoByIdService(id);
@@ -8,7 +9,7 @@ export const getTodoByIdApi = (res: ServerResponse, url: URL) => {
   if (id) {
     const todo = findTodoByIdService(id);
     if (todo) {
-      generateResponse(res, JSONCONTENTTYPE, JSON.parse(todo));
+      generateResponse(res, JSONCONTENTTYPE, JSON.stringify(todo));
     } else {
       generateResponse(res, HTMLCONTENTTYPE, "we can not find this id", 404);
     }
