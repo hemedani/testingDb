@@ -1,5 +1,6 @@
 import { IncomingMessage, ServerResponse } from "node:http";
 import { generateResponse } from "../utils";
+import { createTodoApi } from "./createTodoApi";
 import { getTodoByIdApi } from "./getTodoById";
 import { getTodosApi } from "./getTodosApi";
 
@@ -10,6 +11,8 @@ export const handleRequest = (req: IncomingMessage, res: ServerResponse) => {
       return getTodosApi(res);
     case "/todo":
       return getTodoByIdApi(res, myUrl);
+    case "/add":
+      return createTodoApi(res, myUrl);
     default:
       return generateResponse(res, "text/html", "nothing to say for now");
   }

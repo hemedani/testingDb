@@ -1,10 +1,1 @@
-[
-  { "id": 1, "title": "Learning Typescript", "completed": false },
-  { "id": 2, "title": "Learning React", "completed": false },
-  { "id": 3, "title": "Learning Angular", "completed": false },
-  { "id": 4, "title": "Learning Vue", "completed": false },
-  { "id": 5, "title": "Learning Svelte", "completed": false },
-  { "id": 6, "title": "Learning React Native", "completed": false },
-  { "id": 7, "title": "Learning Flutter", "completed": false },
-  { "id": 8, "title": "learning url", "completed": false }
-]
+[{"id":1,"title":"Learning Typescript","completed":false},{"id":2,"title":"Learning React","completed":false},{"id":3,"title":"Learning Angular","completed":false},{"id":4,"title":"Learning Vue","completed":false},{"id":5,"title":"Learning Svelte","completed":false},{"id":6,"title":"Learning React Native","completed":false},{"id":7,"title":"Learning Flutter","completed":false},{"id":8,"title":"learning url","completed":false},{"id":9,"title":"good luck","completed":false}]
